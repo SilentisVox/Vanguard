@@ -24,6 +24,8 @@ To set up and run this project, follow these steps:
 Run the script using Python from the command line:
 
 ```bash
+git clone https://github.com/SilentisVox/Vanguard
+cd Vanguard
 python vaguard.py
 ```
 
