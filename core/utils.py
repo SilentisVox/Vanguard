@@ -105,7 +105,7 @@ def validate_port(port_str):
         return False
 
 def flush():
-    try:
+    if os.name == 'nt':
         os.system('cls')
-    except:
+    else:
         os.system('clear')
