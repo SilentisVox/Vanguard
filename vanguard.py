@@ -368,7 +368,7 @@ class CommandHandler:
         if (not self.backdoor_server) or (not self.backdoor_server.clients):
             print(f"{e} No Sessions Made")
             return
-        print("\n".join([f"Session {red(f"[{self.backdoor_server.clients.index(client)+1}]")} {client.getpeername()[0]}:{client.getpeername()[1]}" for client in self.backdoor_server.clients]))
+        print("\n".join([f"Session {red(f'[{self.backdoor_server.clients.index(client)+1}]')} {client.getpeername()[0]}:{client.getpeername()[1]}" for client in self.backdoor_server.clients]))
         
     def enter_session(self, client):
         backdoor_client = BackdoorClient(client)
