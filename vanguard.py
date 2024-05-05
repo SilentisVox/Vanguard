@@ -232,7 +232,7 @@ class BackdoorServer:
         if self.server:
             self.server_shutdown()
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.server.setblocking(False)
+        self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.server_thread = threading.Thread(target=self.listen)
         self.server_thread.daemon = True
         self.server_thread.start()
@@ -258,6 +258,7 @@ class CustomHTTPHandler(SimpleHTTPRequestHandler):
         print(f"\n{n} Invalid HTTP request from {self.address_string()}\n{n} Stopping Server\n{prompt}", end="", flush=True)
 
 class HTTPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
+    allow_reuse_address = True
     def __init__(self, HandlerClass, bind_and_activate=True, settings=Settings):
         self.settings = settings
         self.http_thread = None
