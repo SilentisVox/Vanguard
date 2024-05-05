@@ -23,9 +23,9 @@ To set up and run this project, follow these steps:
 
 Run the script using Python from the command line:
 
-'''bash
-python your_script_name.py
-'''
+```bash
+python vaguard.py
+```
 
 Once the script is running, it will start both the backdoor and HTTP servers as configured. You can interact with the system using the command-line interface provided by the script. Here are some commands you can use:
 
