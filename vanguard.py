@@ -232,6 +232,7 @@ class BackdoorServer:
         if self.server:
             self.server_shutdown()
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.server.setblocking(False)
         self.server_thread = threading.Thread(target=self.listen)
         self.server_thread.daemon = True
         self.server_thread.start()
@@ -260,7 +261,7 @@ class HTTPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
     def __init__(self, HandlerClass, bind_and_activate=True, settings=Settings):
         self.settings = settings
         self.http_thread = None
-        self.shutdown = threading.Event()
+        self.shutdown = False
         super().__init__(self.settings.http_server_address, HandlerClass, bind_and_activate)
         
     def request(self):
@@ -275,7 +276,7 @@ class HTTPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
         
     def server_shutdown(self):
         print(f"{n} Stopping HTTP server")
-        self.shutdown.set()
+        self.shutdown = True
         self.server_close()
       
 
