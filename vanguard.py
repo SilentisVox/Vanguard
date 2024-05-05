@@ -389,7 +389,7 @@ class CommandHandler:
         self.backdoor_server.clients[session-1].close()
         del self.backdoor_server.clients[session-1]
         time.sleep(1)
-        print(f"Session {red(f"[{session}]")} Ended")
+        print(f"Session {red(f'[{session}]')} Ended")
     
     def show_help(self):
         print(Settings().help_menu())
