@@ -272,7 +272,7 @@ class HTTPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
         self.http_thread = Thread(target=self.request)
         self.http_thread.daemon = True
         self.http_thread.start()
-        print(f"{n} HTTP Serving 1 Request {red(f"[{self.settings.http_server_address[1]}]")}")
+        print(f"{n} HTTP Serving 1 Request {red(f'[{self.settings.http_server_address[1]}]')}")
         
     def server_shutdown(self):
         print(f"{n} Stopping HTTP server")
