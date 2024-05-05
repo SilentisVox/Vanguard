@@ -1,4 +1,4 @@
-﻿import os, sys, threading, socket, socketserver, itertools, http, random, string, re, subprocess, gzip, base64, io, time, ipaddress
+﻿import os, sys, threading, socket, socketserver, itertools, http, random, string, re, subprocess, time, ipaddress
 from threading import Thread
 from http.server import SimpleHTTPRequestHandler
 
