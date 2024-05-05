@@ -175,8 +175,7 @@ class BackdoorClient:
             'get-ip':self.get_ip,
             'get-users':self.get_users,
             'get-files':self.get_files,
-            'is-admin':self.is_admin,
-            'get-admin':self.get_admin
+            'is-admin':self.is_admin
         }
 
     def null_input(self):
