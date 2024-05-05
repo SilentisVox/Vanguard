@@ -147,11 +147,11 @@ class Generator:
 	else: 
             for match in range(int(reverse_shell.count("\\")/2)):
                 reverse_shell = re.sub(pattern,
-                                        lambda m: random.choice([self.list_2_character_2_string,
-                                                                 self.character_2_string,
-                                                                 self.random_string_2_string])(m),
-                                        reverse_shell,
-                                        count=1)
+                                       lambda m: random.choice([self.list_2_character_2_string,
+                                                                self.character_2_string,
+                                                                self.random_string_2_string])(m),
+                                       reverse_shell,
+                                       count=1)
         
         with open(f'server/{self.settings.script_name}', 'w') as c:
             c.write(self.script_to_char(reverse_shell))
