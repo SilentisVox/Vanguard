@@ -1,6 +1,6 @@
 # Vanguard
 
-![image](https://github.com/SilentisVox/Vanguard/assets/165338136/3fd88fc0-b213-4769-ae9a-5f4fb56e7e54)
+![image](https://github.com/SilentisVox/Vanguard/assets/165338136/7e26bbd9-3c2a-4bed-8c00-8b9d8cac1c53)
 
 This project includes a robust backdoor and HTTP server setup, providing a detailed and customizable environment for network interactions and security testing. The core functionalities allow for command execution, session handling, and dynamic response generation for testing purposes.
 
