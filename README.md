@@ -31,6 +31,8 @@ python vaguard.py
 
 Once the script is running, it will start both the backdoor and HTTP servers as configured. You can interact with the system using the command-line interface provided by the script. Here are some commands you can use:
 
+![image](https://github.com/SilentisVox/Vanguard/assets/165338136/0e3cafbf-a865-45f0-b057-aa191ad186c4)
+
 - `help`: Displays available commands and options.
 - `set [option]`: Change options, such as server addresses or script names.
 - `start [server]`: Starts the specified server (http or backdoor).
