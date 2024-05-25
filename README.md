@@ -37,7 +37,7 @@ Once the script is running, it will start both the backdoor and HTTP servers as 
 - `set [option]`: Change options, such as server addresses or script names.
 - `start [server]`: Starts the specified server (http or backdoor).
 - `kill [server]`: Stops the specified server.
-- `generate [script|bin]`: Generates a PowerShell script or binary for injection.
+- `generate [bin|script|shell]`: Generates a binary for injection, custom reverse shell powershell script, or hollowed reverse shell from scvhost.exe
 - `sessions`: Displays all active backdoor sessions.
 - `exit`: Exits the application.
 
