@@ -477,8 +477,11 @@ class CommandHandler:
     def generate_shell(self):
         Generator().generate_shell()
         
-    def generate_bin(self):
-        Generator().encode_duckyscript()
+    def generate_script_bin(self):
+        Generator().encode_duckyscript_script()
+
+    def generate_shell_bin(self):
+        Generator().encode_duckyscript_shell()
         
     def show_options(self):
         print(Settings().print_menu())
