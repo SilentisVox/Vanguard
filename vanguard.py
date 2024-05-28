@@ -118,6 +118,8 @@ class Generator:
             
         pattern = r"/.+?/"
 
+        print(f"{n} generating {self.settings.script_name} . . .")
+	    
         variables_2_replace = ["GetProcAddressVar",
                                "SHELLCODE",
                                "GetModuleHandleVar",
