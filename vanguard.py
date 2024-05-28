@@ -401,18 +401,19 @@ class CommandHandler:
         self.backdoor_server = None
         self.http_server = None
         self.commands = {
-            'start backdoor':    self.start_backdoor_server,
-            'kill backdoor':     self.kill_backdoor_server,
-            'start http':        self.start_http_server,
-            'kill http':         self.kill_http_server,
-            'generate script':   self.generate_script,
-            'generate shell':    self.generate_shell,
-            'generate bin':      self.generate_bin,
-            'options':           self.show_options,
-            'sessions':          self.show_sessions,
-            'help':              self.show_help,
-            'clear':             flush,
-            'exit':              self.Vanguard_out
+            'start backdoor':      self.start_backdoor_server,
+            'kill backdoor':       self.kill_backdoor_server,
+            'start http':          self.start_http_server,
+            'kill http':           self.kill_http_server,
+            'generate script':     self.generate_script,
+            'generate shell':      self.generate_shell,
+            'generate script bin': self.generate_script_bin,
+            'generate shell bin':  self.generate_shell_bin,
+            'options':             self.show_options,
+            'sessions':            self.show_sessions,
+            'help':                self.show_help,
+            'clear':               flush,
+            'exit':                self.Vanguard_out
         }
 
     def Vanguard_out(self):
