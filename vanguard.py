@@ -16,7 +16,7 @@ class Settings:
     {n} set      {gray("[+]")} :: Change options to jobs                :: {gray(f"set backdoor {white('<ip> <port>')}")}, {gray(f"set http {white('<ip> <port>')}")}
     {n} options      :: Shows Set Options                     :: 
     {n} start    {gray("[+]")} :: Starts Server                         :: {gray("http, backdoor")}
-    {n} generate {gray("[+]")} :: Generates .bin or shell type          :: {gray("bin {script|shell}, script, shell")}
+    {n} generate {gray("[+]")} :: Generates .bin or shell type          :: {gray("{script|shell} bin, script, shell")}
     {n} kill     {gray("[+]")} :: Kills Server                          :: {gray("http, backdoor")}
     {n} sessions     :: Displays All Backdoor Sessions        ::
     {n} end      {gray("[+]")} :: Ends a Specified Session              :: {gray(f"end session {white('<session>')}")}
