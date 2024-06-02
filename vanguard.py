@@ -246,7 +246,8 @@ class Generator:
         os.remove("core/payload/ducky/script.txt")
 
 class BackdoorClient:
-    def __init__(self, client):
+    def __init__(self, client, settings=Settings):
+	self.settings = settings
         self.client = client
         self.client_thread = None
         self.shutdown = False
