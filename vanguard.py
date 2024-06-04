@@ -247,7 +247,7 @@ class Generator:
 
 class BackdoorClient:
     def __init__(self, client, settings=Settings):
-	self.settings = settings
+        self.settings = settings
         self.client = client
         self.client_thread = None
         self.shutdown = False
