@@ -26,7 +26,7 @@ Run the script using Python from the command line:
 ```bash
 git clone https://github.com/SilentisVox/Vanguard
 cd Vanguard
-python vaguard.py
+python vanguard.py
 ```
 
 Once the script is running, it will start both the backdoor and HTTP servers as configured. You can interact with the system using the command-line interface provided by the script. Here are some commands you can use:
