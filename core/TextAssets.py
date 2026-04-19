@@ -1,6 +1,5 @@
 import sys
 import time
-import datetime
 
 RED                                     = "\x1B[38;2;200;000;000m"
 YELLOW                                  = "\x1B[38;2;227;176;000m"
@@ -219,7 +218,7 @@ def bannerfy() -> None:
         cursor_off()
 
         for _ in range(500):
-                time.sleep(0.0012)
+                time.sleep(0.0005)
                 banner.update_screen()
                 banner.display()
 
@@ -313,32 +312,8 @@ def sessions(clients: dict) -> None:
         sys.stdout.write(all_sessions)
         sys.stdout.flush()
 
-def white(user_input: str) -> str:
-        return "\x1B[38;2;255;255;255m{}\x1B[0m".format(user_input)
-
-def red(user_input: str) -> str:
-        return "\x1B[38;2;219;37;40m{}\x1B[0m".format(user_input)
-
-def yorange(user_input: str) -> str:
-        return "\x1B[38;2;219;165;22m{}\x1B[0m".format(user_input)
-
-def green(user_input: str) -> str:
-        return "\x1B[38;2;59;219;46m{}\x1B[0m".format(user_input)
-
-def teal(user_input: str) -> str:
-        return "\x1B[38;2;0;219;163m{}\x1B[0m".format(user_input)
-
-def blue(user_input: str) -> str:
-        return "\x1B[38;2;71;156;219m{}\x1B[0m".format(user_input)
-
-def gray(user_input: str) -> str:
-        return "\x1B[38;2;80;80;80m{}\x1B[0m".format(user_input)
-
-def custom(user_input: str, color: tuple[int, int, int]) -> str:
-        return "\x1B[38;2;{};{};{}m{}\x1B[0m".format(color[0], color[1], color[2], user_input)
-
 def timey() -> str:
-        return datetime.datetime.now().strftime("%H:%M:%S")
+        return time.strftime("%H:%M:%S", time.localtime())
 
 def info(user_input: str, prompt_needed: bool = False) -> None:
         sys.stdout.write("\r[{}] [{}] {}\n".format(teal(timey()), blue("INFO"), user_input))
@@ -382,6 +357,30 @@ def cursor_on():
 def cursor_off():
         sys.stdout.write("\x1B[?25l")
         sys.stdout.flush()
+
+def white(user_input: str) -> str:
+        return "\x1B[38;2;255;255;255m{}\x1B[0m".format(user_input)
+
+def red(user_input: str) -> str:
+        return "\x1B[38;2;219;37;40m{}\x1B[0m".format(user_input)
+
+def yorange(user_input: str) -> str:
+        return "\x1B[38;2;219;165;22m{}\x1B[0m".format(user_input)
+
+def green(user_input: str) -> str:
+        return "\x1B[38;2;59;219;46m{}\x1B[0m".format(user_input)
+
+def teal(user_input: str) -> str:
+        return "\x1B[38;2;0;219;163m{}\x1B[0m".format(user_input)
+
+def blue(user_input: str) -> str:
+        return "\x1B[38;2;71;156;219m{}\x1B[0m".format(user_input)
+
+def gray(user_input: str) -> str:
+        return "\x1B[38;2;80;80;80m{}\x1B[0m".format(user_input)
+
+def custom(user_input: str, color: tuple[int, int, int]) -> str:
+        return "\x1B[38;2;{};{};{}m{}\x1B[0m".format(color[0], color[1], color[2], user_input)
 
 if __name__ == "__main__":
         bannerfy()

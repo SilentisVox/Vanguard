@@ -49,13 +49,12 @@ def vanguard() -> None:
 
         except KeyboardInterrupt:
                 info("Exiting ...")
-                return
 
         except Exception as exception:
                 error("Exception: {}".format(exception))
-                return
 
-        command_handler.kill_all()
+        command_handler.eradicate()
+        exit()
 
 if __name__ == "__main__":
         vanguard()

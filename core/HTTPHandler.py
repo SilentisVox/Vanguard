@@ -32,7 +32,7 @@ class HTTPServer:
                         local_bind.listen()
 
                 except Exception as exception:
-                        # ERROR
+                        error("Exception: {}".format(exception))
                         return False
 
                 self.server.shutdown    = False
@@ -74,12 +74,12 @@ class HTTPServer:
                 client: socket.socket
         ) -> None:
                 if not self.validate(client):
-                        client.close()
+                        return client.close()
 
                 info("Successful request to HTTP server.", True)
 
                 response                = self.get_response()
-                client.send(response.encode())
+                client.sendall(response.encode())
                 client.close()
 
         # We sepcify the appropriate request look like

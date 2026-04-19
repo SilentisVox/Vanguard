@@ -110,17 +110,21 @@ class TCPHandler:
                         time.sleep(1)
 
         def track_clients(self) -> None:
-                for client_id, client in self.clients.items():
-                        if client.status == "Lost":
-                                continue
+                try:
+                        for client_id, client in self.clients.items():
+                                if client.status == "Lost":
+                                        continue
 
-                        if client.in_use:
-                                continue
+                                if client.in_use:
+                                        continue
 
-                        if self.receiver.peek(client.connection):
-                                continue
+                                if self.receiver.peek(client.connection):
+                                        continue
 
-                        client.status = "Lost"
+                                client.status = "Lost"
+
+                except RuntimeError:
+                        return
 
         def quick_check(self) -> bool:
                 for client_id, client in self.clients.items():

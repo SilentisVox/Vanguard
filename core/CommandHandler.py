@@ -249,10 +249,10 @@ class CommandHandler:
                 self, 
                 client_id: str
         ) -> None:
-                client_identifier       = client_identifier.upper()
-                client                  = self.tcp_server.clients[client_identifier]
+                client_id               = client_id.upper()
+                client                  = self.tcp_server.clients[client_id]
 
-                if client_identifier not in self.tcp_server.clients:
+                if client_id not in self.tcp_server.clients:
                         return debug("Client does not exist.")
 
                 if client.status == "Lost":
@@ -260,10 +260,11 @@ class CommandHandler:
 
                 client.connection.close()
                 client.status           = "Lost"
+                success("Client successfully ended.")
 
         def eradicate(self) -> None:
-                for client_identifier in self.tcp_server.clients.keys():
-                        client          = self.tcp_server.clients[client_identifier]
+                for client_id in self.tcp_server.clients.keys():
+                        client          = self.tcp_server.clients[client_id]
                         client.status   = "Lost"
                         client.connection.close()
 
