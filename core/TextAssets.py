@@ -33,7 +33,7 @@ class Banner:
         def setup_step_calculator(self) -> None:
                 PRE_EXISTENCE           = 800
                 TO_SHINE                = 210
-                IN_SHINE                = 10
+                IN_SHINE                = 3
                 FROM_SHINE              = 210
                 POST_EXISTENCE          = 400
         
@@ -46,14 +46,14 @@ class Banner:
 
                 for step in range(LIFE_BEFORE):
                         current         = step
-                        color           = 0x7D8185 << 24
+                        color           = 0x191D21 << 24
                         data            = color | (step + 1)
 
                         self.NEXT_STEP[step] = data
 
                 for step in range(LIFE_BEFORE, LIFE_COMING):
                         current         = step - LIFE_BEFORE
-                        color           = self.interpret_fade(0x7D8185, 0xB0B7BF, 210, current) << 24
+                        color           = self.interpret_fade(0x191D21, 0x787A7A, 210, current) << 24
                         data            = color | (step + 1)
 
                         self.NEXT_STEP[step] = data
@@ -218,7 +218,8 @@ def bannerfy() -> None:
         cursor_off()
 
         for _ in range(500):
-                time.sleep(0.0005)
+                time_sleeping = 0.1 * (1 / (-1 * (_ - 501)))
+                time.sleep(time_sleeping)
                 banner.update_screen()
                 banner.display()
 
