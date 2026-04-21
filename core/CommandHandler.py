@@ -21,8 +21,8 @@ class CommandHandler:
                         "kill" : {
                                 "min_args" : 1,
                                 "max_args" : 1,
-                                "function" : self.stop,
-                                "descript" : """ \r stop [service]      : Stops a service given. Does not
+                                "function" : self.kill,
+                                "descript" : """ \r kill [service]      : Kills a service given. Does not
                                                  \r                       terminate any connection that are
                                                  \r                       currently held with service.
                                                  \r                       Ex:
@@ -44,7 +44,7 @@ class CommandHandler:
                         "options" : {
                                 "min_args" : 0,
                                 "max_args" : 1,
-                                "function" : self.jobs,
+                                "function" : self.options,
                                 "descript" : """ \r options             : Displays current settings for services
                                                  \r                       while running, or going to be run.
                                 """
@@ -69,7 +69,9 @@ class CommandHandler:
                                 "min_args" : 1,
                                 "max_args" : 1,
                                 "function" : self.end,
-                                "descript" : """ \r end [+]             : Kills a respective client.
+                                "descript" : """ \r end [+]             : Ends a respective client communication.
+                                                 \r                       Ex:
+                                                 \r                       end [XXXX-XXXX-XXXX]
                                 """
                         },
                         "eradicate" : {
@@ -101,6 +103,13 @@ class CommandHandler:
                                 "function" : self.done,
                                 "descript" : """ \r exit                : Gracefully destroys services and closes
                                                  \r                       any client connections.
+                                """
+                        },
+                        "banner" : {
+                                "min_args" : 0,
+                                "max_args" : 0,
+                                "function" : bannerfy,
+                                "descript" : """ \r banner              : Prints the banner :P
                                 """
                         }
                         
@@ -170,7 +179,7 @@ class CommandHandler:
                 
                 success("Server successfully started.")
 
-        def stop(
+        def kill(
                 self,
                 service: str
         ) -> None:
@@ -221,7 +230,7 @@ class CommandHandler:
                 payload                 = encoded_map[payload_form](payload)
                 print(gray(payload))
         
-        def jobs(self) -> None:
+        def options(self) -> None:
                 jobs(self.tcp_server, self.http_server)
 
         def session(
