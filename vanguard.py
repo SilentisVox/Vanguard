@@ -9,8 +9,8 @@ import argparse
 def vanguard() -> None:
         parser                          = argparse.ArgumentParser()
         parser.add_argument("-c", "--callback",   type=str, help="Callback address.")
-        parser.add_argument("-tp", "--tcp-port",  type=str, help="TCP listen port.")
-        parser.add_argument("-hp", "--http-port", type=str, help="HTTP listen port.")
+        parser.add_argument("-tp", "--tcp-port",  type=int, default=4444, help="TCP listen port.")
+        parser.add_argument("-hp", "--http-port", type=int, default=8080, help="HTTP listen port.")
         parser.add_argument("-q", "--quiet",      action="store_true")
         arguments                       = parser.parse_args()
 
@@ -22,14 +22,14 @@ def vanguard() -> None:
 
         tcp_server                      = TCPHandler()
         tcp_server.bind_address         = "0.0.0.0"
-        tcp_server.bind_port            = 4444
+        tcp_server.bind_port            = arguments.tcp_port
         
         if not tcp_server.start():
                 return
 
         http_server                     = HTTPServer()
         http_server.bind_address        = "0.0.0.0"
-        http_server.bind_port           = 8080
+        http_server.bind_port           = arguments.http_port
         http_server.payload             = Payload.tcp(arguments.callback, str(tcp_server.bind_port))
         
         
